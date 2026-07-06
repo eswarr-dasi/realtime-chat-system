@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: realtime-chat-system
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:chatdb;DB_CLOSE_DELAY=-1}
+    username: ${DB_USER:sa}
+    password: ${DB_PASS:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: ${DB_DIALECT:org.hibernate.dialect.H2Dialect}
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 3000ms
+
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+chat:
+  instance-id: ${INSTANCE_ID:instance-local}
+  jwt:
+    secret: ${JWT_SECRET:this-is-a-demo-secret-key-change-in-production-min-32-chars}
+    expiration-ms: 86400000
+
+logging:
+  level:
+    com.eswarr.chat: INFO
+    org.springframework.web.socket: WARN
