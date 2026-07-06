@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-**[chat.eswarr-dasi.dev](#)** — try it live (link updated after deployment)
+**[realtime-chat-system-ic9k.onrender.com](https://realtime-chat-system-ic9k.onrender.com)** — try it live (open two tabs to see real-time sync in action)
 
 ---
 
