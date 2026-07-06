@@ -20,10 +20,26 @@ services:
     plan: free
     healthCheckPath: /actuator/health
     envVars:
-      - key: DATABASE_URL
+      - key: DB_HOST
         fromDatabase:
           name: chat-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: chat-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: chat-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: chat-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: chat-db
+          property: password
       - key: DB_DRIVER
         value: org.postgresql.Driver
       - key: DB_DIALECT
